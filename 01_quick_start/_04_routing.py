@@ -21,6 +21,7 @@ def hello_user(name):
     else:
         return f"Hello, {escape(name)}!"
 
+
 """
 Routing
 --------
@@ -29,5 +30,5 @@ Users are more likely to like a page and come back if the
 page uses a meaningful URL they can remember and use to 
 directly visit a page.
 
-Use the route() decorator to bind a function to a URL.
+Use the `route()` decorator to bind a function to a URL.
 """

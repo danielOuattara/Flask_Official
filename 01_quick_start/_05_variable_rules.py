@@ -20,17 +20,25 @@ def show_post(post_id):
     # show the post with the given id, the id is an integer
     return f'Post {post_id}'
 
+
 @app.route('/path/<path:subpath>')
 def show_subpath(subpath):
     # show the subpath after /path/
     return f'Subpath {escape(subpath)}'
 
+
+@app.route('/product/<uuid:productId>')
+def show_product(productId):
+    # show the productId
+    return f'productId: {escape(productId)}'
+
+
 """
 
 Variable Rules
 ---------------
-You can add variable sections to a URL by marking 
-sections with <variable_name>. 
+You can add dynamic sections to a URL by marking 
+sections with <variable_name> in @route() 
 
 Your function then receives the <variable_name> as 
 a keyword argument. 

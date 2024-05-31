@@ -15,9 +15,10 @@ So what did that code do ? :
 
     2. Next we create an instance of this class. 
        The first argument is the name of the application’s module or package. 
-       __name__ is a convenient shortcut for this that is appropriate for most 
-       cases. This is needed so that Flask knows where to look for resources 
-       such as templates and static files.
+       `__name__` is a convenient shortcut for this that is appropriate 
+       for most cases. 
+       This is needed so that Flask knows where to look for resources such as 
+       templates and static files.
 
     3. We then use the route() decorator to tell Flask what URL should trigger 
        our function.
@@ -27,10 +28,9 @@ So what did that code do ? :
        by the browser.
        
        
-       To run the application, use the flask command or python -m flask. 
+To run the application, use the flask command or python -m flask. 
        
-       You need to tell the Flask where your application is with the --app option.
+You need to tell the Flask where your application is with the --app option.
 
-       flask --app file_name run
-
+flask --app file_name run
 '''
