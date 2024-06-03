@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>
+      {% if person %} Welcome {{person}} {% else %} Welcome user {% endif %}
+    </title>
+  </head>
+
+  <body>
+    {% if person %}
+    <h1>Hello {{person}}</h1>
+    {% else %}
+    <h1>Hello User</h1>
+    {% endif %}
+
+    <p>This is a page</p>
+  </body>
+</html>
