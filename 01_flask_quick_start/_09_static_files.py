@@ -1,4 +1,4 @@
-from flask import Flask,  url_for
+from flask import Flask, url_for
 
 app = Flask(__name__)
 
@@ -23,11 +23,14 @@ def login():
 
     <body>
      <p>Welcome to Login page </p>
-
+     <img src="{}" alt="nature">
     </body>
 
 </html>
-'''.format(url_for('static', filename='style.css'))
+'''.format(
+        url_for('static', filename='style.css'),
+        url_for('static', filename='nature.jpg')
+    )
 
 
 """ 

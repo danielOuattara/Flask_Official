@@ -9,17 +9,14 @@ def index():
     return " Index page"
 
 
-# @app.route('/hello')
-# def hello():
-#     return 'Hello world of Flask !'
+@app.route('/hello')
+def hello():
+    return 'Hello Flask world!'
 
 
 @app.route("/<name>")
 def hello_user(name):
-    if name == 'hello':
-        return 'Hello world of Flask !'
-    else:
-        return f"Hello, {escape(name)}!"
+    return f"Hello, {escape(name)}!"
 
 
 """

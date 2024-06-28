@@ -1,3 +1,23 @@
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
+
+
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('hello.html', person=name)
+
+
+with app.test_request_context('/hello', method='POST'):
+    # now you can do something with the request until the
+    # end of the with block, such as basic assertions:
+    assert request.path == '/hello'
+    assert request.method == 'POST'
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 """ 
@@ -46,25 +66,3 @@ context manager. In combination with the with statement it will bind a
 test request so that you can interact with it. Here is an example:
 
 """
-
-
-from flask import Flask, request, render_template
-
-app = Flask(__name__)
-
-
-@app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('hello.html', person=name)
-
-
-with app.test_request_context('/hello', method='POST'):
-    # now you can do something with the request until the
-    # end of the with block, such as basic assertions:
-    assert request.path == '/hello'
-    assert request.method == 'POST'
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

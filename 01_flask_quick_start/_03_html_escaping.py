@@ -25,7 +25,7 @@ will do this automatically.
 
 `escape()`, shown here, can be used manually. It is omitted 
 in most examples for brevity, but you should always be aware 
-of how you’re using untrusted data.
+of how you're using untrusted data.
 
 If a user managed to submit the name <script>alert("bad")</script>, 
 escaping causes it to be rendered as text, rather than running 

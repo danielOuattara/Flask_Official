@@ -41,7 +41,7 @@ arguments. Here's a simple example of how to render a template:
 IMPORTANT: 
 
 
-Flask will look for templates in the templates folder. 
+Flask will look for templates in the templates/ folder. 
 
 - if your application is a module, this folder is next to 
 that module, 
@@ -55,5 +55,72 @@ that module,
     /__init__.py
     /templates
         /hello.html
+
+
+
+For templates you can use the full power of Jinja2 templates. 
+Head over to the official Jinja2 Template Documentation for 
+more information. https://jinja.palletsprojects.com/templates/
+
+Here is an example template:
+
+----
+<!doctype html >
+<title > Hello from Flask < /title >
+{ % if person % }
+<h1 > Hello {{person}}!< /h1 >
+{ % else % }
+<h1 > Hello, World!< /h1 >
+{ % endif % }
+----
+
+Inside templates you also have access to the 'config', 'request', 
+'session' and 'g' [1] objects as well as the 'url_for()' and 
+'get_flashed_messages()' functions.
+
+
+Templates are especially useful if inheritance is used. If you
+ want to know how that works, see Template Inheritance.
+ https://flask.palletsprojects.com/en/3.0.x/patterns/templateinheritance/ 
+ 
+
+Basically template inheritance makes it possible to keep certain 
+elements on each page (like header, navigation and footer).
+
+Automatic escaping is enabled, so if 'person' contains HTML it will 
+be escaped automatically. If you can trust a variable and you know 
+that it will be safe HTML (for example because it came from a module 
+that converts wiki markup to HTML) you can mark it as safe by using 
+the Markup class or by using the '|safe' filter in the template. 
+Head over to the Jinja 2 documentation for more examples.
+
+
+
+Here is a basic introduction to how the 'Markup' class works:
+
+---
+
+>>>from markupsafe import Markup
+>>>Markup('<strong>Hello %s!</strong>') % '<blink>hacker</blink>'
+Markup('<strong>Hello &lt;blink&gt;hacker&lt;/blink&gt;!</strong>')
+
+>>>Markup.escape('<blink>hacker</blink>')
+Markup('&lt;blink&gt;hacker&lt;/blink&gt;')
+
+>>>Markup('<em>Marked up</em> &raquo; HTML').striptags()
+'Marked up » HTML'
+
+Changelog
+----------
+Changed in version 0.5: Autoescaping is no longer enabled for 
+all templates. The following extensions for templates trigger 
+autoescaping: .html, .htm, .xml, .xhtml. Templates loaded from 
+a string will have autoescaping disabled.
+
+
+[1]: Unsure what that 'g' object is ? 
+It's something in which you can store information for your own 
+needs. See the documentation for flask.g and Using SQLite 3 with Flask.
+https://flask.palletsprojects.com/en/3.0.x/patterns/sqlite3/
 
 """

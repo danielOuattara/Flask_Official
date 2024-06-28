@@ -1,4 +1,5 @@
 from flask import Flask, url_for
+from markupsafe import escape
 
 app = Flask(__name__)
 
@@ -15,7 +16,7 @@ def login():
 
 @app.route('/user/<username>/<role>/')
 def profile(username, role):
-    return f'{username}\'s profile page role as {role}'
+    return f'{escape(username)}\'s profile page role as {escape(role)}'
 
 
 with app.test_request_context():
